@@ -1,0 +1,27 @@
+CREATE DATABASE Stadium
+ USE Stadium
+
+ CREATE TABLE Stadiums
+ (
+	 Id INT PRIMARY KEY IDENTITY,
+	 Name NVARCHAR(20) NOT NULL,
+     HourPrice DECIMAL(18,2),
+     Capacity INT
+ )
+
+  CREATE TABLE Users
+ (
+	 Id INT PRIMARY KEY IDENTITY,
+	 Fullname NVARCHAR(20) NOT NULL,
+	 Email NVARCHAR(50)
+ )
+
+  CREATE TABLE Reservations
+ (
+	 Id INT PRIMARY KEY IDENTITY,
+	 UserId INT FOREIGN KEY REFERENCES Users(Id),
+	 StadiumId INT FOREIGN KEY REFERENCES Stadiums(Id),
+	 StartDate DATETIME2,
+	 EndDate DATETIME2
+ )
+
